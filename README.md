@@ -1,6 +1,6 @@
-# Pokemon Center Discord Bot Setup Guide
+# One Piece Bot Discord Bot Setup Guide (NOT DONE YET)
 
-A Discord bot that monitors Pokemon Center for new product listings and posts beautiful embed notifications to your Discord server.
+A Discord bot that monitors Card Stores for new product listings and posts beautiful embed notifications to your Discord server.
 
 ## Features
 
@@ -26,7 +26,7 @@ A Discord bot that monitors Pokemon Center for new product listings and posts be
 
 2. **Create New Application**
    - Click "New Application"
-   - Give it a name (e.g., "Pokemon Center Monitor")
+   - Give it a name (e.g., "One Piece Monitor")
    - Click "Create"
 
 3. **Create Bot User**
@@ -101,11 +101,11 @@ load_dotenv()  # Add this at the top of main()
 
 ## Step 3: Configure the API Endpoint
 
-**IMPORTANT:** You need to find Pokemon Center's actual JSON API endpoint.
+**IMPORTANT:** You need to find One Piece's actual JSON API endpoint.
 
 ### How to Find the API Endpoint:
 
-1. Open Pokemon Center website in Chrome/Firefox
+1. Open One Piece website in Chrome/Firefox
 2. Press F12 to open Developer Tools
 3. Go to "Network" tab
 4. Filter by "XHR" or "Fetch"
@@ -115,7 +115,7 @@ load_dotenv()  # Add this at the top of main()
 
 ### Update the Bot Script:
 
-Edit line 27 in `pokemon_center_discord_bot.py`:
+Edit line 27 in `One Piece_discord_bot.py`:
 ```python
 self.api_url = "YOUR_ACTUAL_API_ENDPOINT_HERE"
 ```
@@ -144,12 +144,12 @@ if isinstance(data, dict):
 
 Start the bot:
 ```bash
-python pokemon_center_discord_bot.py
+python One Piece_discord_bot.py
 ```
 
 You should see:
 ```
-🎮 Pokemon Center Bot is online!
+🎮 One Piece Bot is online!
 Logged in as: YourBotName (ID: 123456789)
 Connected to 1 server(s)
 ------
@@ -207,7 +207,7 @@ Manually trigger a check for new listings.
 
 ## How It Works
 
-1. **Background Task**: The bot runs a background task that checks Pokemon Center every X seconds (default: 5 minutes)
+1. **Background Task**: The bot runs a background task that checks One Piece every X seconds (default: 5 minutes)
 
 2. **New Item Detection**: Compares current listings with cached listings to identify new products
 
@@ -218,7 +218,7 @@ Manually trigger a check for new listings.
    - Description (truncated if long)
    - Timestamp
 
-4. **Cache Management**: Stores seen listings in `pokemon_center_cache.json` to avoid duplicate notifications
+4. **Cache Management**: Stores seen listings in `One Piece_cache.json` to avoid duplicate notifications
 
 ## Customization
 
@@ -264,7 +264,7 @@ embed.set_footer(text="Your Custom Text", icon_url="your_icon_url")
 Create `/etc/systemd/system/pokemon-discord-bot.service`:
 ```ini
 [Unit]
-Description=Pokemon Center Discord Bot
+Description=One Piece Discord Bot
 After=network.target
 
 [Service]
@@ -272,7 +272,7 @@ Type=simple
 User=your_username
 WorkingDirectory=/path/to/bot
 Environment="DISCORD_BOT_TOKEN=your_token_here"
-ExecStart=/usr/bin/python3 /path/to/pokemon_center_discord_bot.py
+ExecStart=/usr/bin/python3 /path/to/One Piece_discord_bot.py
 Restart=always
 RestartSec=10
 
@@ -305,7 +305,7 @@ nssm install PokemonBot
 4. In the GUI:
    - Path: `C:\Python\python.exe`
    - Startup directory: `C:\path\to\bot`
-   - Arguments: `pokemon_center_discord_bot.py`
+   - Arguments: `One Piece_discord_bot.py`
    - Environment: Add `DISCORD_BOT_TOKEN=your_token`
 5. Click "Install service"
 6. Start with: `nssm start PokemonBot`
@@ -315,7 +315,7 @@ nssm install PokemonBot
 Using screen:
 ```bash
 screen -S pokemon-bot
-python3 pokemon_center_discord_bot.py
+python3 One Piece_discord_bot.py
 # Press Ctrl+A, then D to detach
 ```
 
@@ -334,9 +334,9 @@ WORKDIR /app
 COPY requirements_discord.txt .
 RUN pip install -r requirements_discord.txt
 
-COPY pokemon_center_discord_bot.py .
+COPY One Piece_discord_bot.py .
 
-CMD ["python", "pokemon_center_discord_bot.py"]
+CMD ["python", "One Piece_discord_bot.py"]
 ```
 
 Build and run:
@@ -377,7 +377,7 @@ docker run -d --name pokemon-bot \
 
 ### Cache issues
 - Reset with: `!pc reset`
-- Or manually delete `pokemon_center_cache.json`
+- Or manually delete `One Piece_cache.json`
 
 ## Security Best Practices
 
@@ -437,11 +437,11 @@ If you encounter issues:
 
 ## License
 
-This bot is provided as-is for educational and personal use. Respect Pokemon Center's terms of service and don't abuse their API.
+This bot is provided as-is for educational and personal use. Respect One Piece's terms of service and don't abuse their API.
 
 ## Notes
 
-- Be respectful of Pokemon Center's servers
+- Be respectful of One Piece's servers
 - Don't set intervals too low (minimum 60 seconds recommended)
 - The bot is for personal/community use only
 - API endpoints may change - update the script accordingly
